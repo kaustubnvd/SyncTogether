@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-body {
+.home-body {
   background: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
 .home-header {
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 #home-title {
@@ -34,7 +34,7 @@ body {
 .form-input {
   display: block;
   width: 85%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 10px 0px;
   padding: 12.5px;
   outline: none;
@@ -49,16 +49,16 @@ body {
 }
 
 .form-btn {
-    font-family: "Montserrat", sans-serif;
-    background-color: #ff0000;
-    color: #fff;
-    position: absolute;
-    right: 65px;
-    bottom: 50px;
-    padding: 10px 50px;
-    border-radius: 4px;
-    border: none;
-    outline: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #ff0000;
+  color: #fff;
+  position: absolute;
+  right: 65px;
+  bottom: 50px;
+  padding: 10px 50px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
 }
 
 .form-btn:hover {
@@ -69,3 +69,97 @@ body {
   color: #d1d1d1;
 }
 
+/* Room.css */
+
+.room-body {
+  margin: 0;
+  background-color: #262626;
+}
+
+.room-header {
+  background-color: #000;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  padding: 14px;
+}
+
+#room-title {
+  font-size: 22px;
+  position: relative;
+  bottom: 4px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo {
+  position: relative;
+  top: 1px;
+  margin-left: 20px;
+}
+
+#searchbar {
+  position: absolute;
+  left: 27.7%;
+  top: 10px;
+  outline: none;
+  width: 850px;
+  background-color: #262626;
+  border-color: transparent;
+  padding: 8px 0px 8px 10px;
+  border-radius: 5px;
+  border-width: 0.5px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+}
+
+#searchbar:focus {
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: #fff;
+}
+
+::placeholder {
+  font-size: 15px;
+  color: #a7a7a7;
+  padding-left: 0px;
+}
+
+.invite-icon {
+  position: absolute;
+  left: 20px;
+  bottom: 6px;
+}
+
+#invite-btn {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  position: absolute;
+  left: 82.5%;
+  top: 12px;
+  background-color: #2b2d42;
+  color: #fff;
+  padding: 8px 30px 8px 50px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+#invite-btn:hover {
+  background-color: #1f2030;
+}
+
+#invite-btn:active {
+  background-color: #171824;
+}
+
+main {
+  position: relative;
+}
+
+#player {
+  position: absolute;
+  top: 20px;
+  left: 50px;
+}

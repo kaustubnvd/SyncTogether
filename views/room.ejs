@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  </head>
+  <body class="room-body">
+    <header class="room-header">
+      <i class="material-icons logo">loop</i>
+      <a href="/" id="room-title">SyncTogether</a>
+      <input id="searchbar" type="text" placeholder="Search for YouTube video or enter URL"/>
+      <button id="invite-btn"><i class="material-icons invite-icon">person_add_alt_1</i>Invite Friends</button>
+    </header>
+    <main>
+      <!-- YouTube player -->
+      <div id="player"></div>
+      <script defer src="https://www.youtube.com/iframe_api"></script>
+      <script defer src="/js/youtube-player.js"></script>
+    </main>
+  </body>
+</html>

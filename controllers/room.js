@@ -3,5 +3,5 @@ exports.createRoom = (req, res) => {
 };
 
 exports.joinRoom = (req, res) => {
-  res.send(`Welcome to ${req.params.room}`);
+  res.render('room');
 };
