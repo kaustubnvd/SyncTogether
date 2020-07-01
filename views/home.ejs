@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SyncTogether</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css"/>
+    <script defer src="/js/script.js"></script>
   </head>
   <body class="home-body">
+    <script>0</script> <!-- Fixes annoying Firefox bug with FOUC (Flash of unstyled content) -->
     <header class="home-header">
       <h1 id="home-title">SyncTogether</h1>
       <h2>Watch YouTube videos together with your friends!</h2>
@@ -18,6 +20,9 @@
           <input class="form-input" type="text" id="nickname" name="nickname" placeholder="shadowcrux, parth8a, !xobile, sanjrang12, etc." required><br>
           <label for="room">Room Name:</label>
           <input class="form-input" type="text" id="room" name="room" placeholder="Help your friends find your room..." required>
+          <label for="form-join">
+            <input type="checkbox" id="form-join" name="isJoining"> <span>Join existing room</span>
+          </label>
           <button class="form-btn" type="submit">Create Room</button>
         </form>
       </div>

@@ -3,9 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>SyncTogether - <%= roomName %></title>
     <link rel="stylesheet" href="/css/style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!-- Make the following variables available in main.js -->
+    <script> const nickname = "<%= nickname %>"; const roomName = "<%= roomName %>"; </script>
+    <script defer src="https://www.youtube.com/iframe_api"></script>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/main.js"></script>
   </head>
   <body class="room-body">
     <header class="room-header">
@@ -17,8 +22,14 @@
     <main>
       <!-- YouTube player -->
       <div id="player"></div>
-      <script defer src="https://www.youtube.com/iframe_api"></script>
-      <script defer src="/js/youtube-player.js"></script>
+      <!-- Chat -->
+      <div class="chat-box">
+        <div class="chat-header">
+          <span id="room-name"><%= roomName %></span>
+        </div>
+        <div class="chat-area"></div>
+        <input id="chat-input" type="text" placeholder="Enter Message" autocomplete="off">
+      </div>
     </main>
   </body>
 </html>

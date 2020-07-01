@@ -1,12 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+::-webkit-scrollbar {
+  background-color: #18181a;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #404040;
+}
 
 .home-body {
-  background: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
 }
 
 .home-header {
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #home-title {
@@ -28,13 +40,13 @@
   margin-top: 50px;
   margin-left: 10%;
   font-size: 18px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .form-input {
   display: block;
   width: 85%;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 10px 0px;
   padding: 12.5px;
   outline: none;
@@ -48,8 +60,12 @@
   border-color: red;
 }
 
+#form-join {
+  margin-top: 25px;
+}
+
 .form-btn {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background-color: #ff0000;
   color: #fff;
   position: absolute;
@@ -65,6 +81,10 @@
   background-color: #9e2323;
 }
 
+.form-btn:active {
+  background-color: #861f1f;
+}
+
 ::placeholder {
   color: #d1d1d1;
 }
@@ -73,13 +93,15 @@
 
 .room-body {
   margin: 0;
-  background-color: #262626;
+  background-color: #191919;
 }
 
+/* Room Header */
+
 .room-header {
-  background-color: #000;
+  background-color: #0b0c0e;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding: 14px;
 }
 
@@ -94,7 +116,7 @@
 .logo {
   position: relative;
   top: 1px;
-  margin-left: 20px;
+  margin-left: 38px;
 }
 
 #searchbar {
@@ -109,7 +131,7 @@
   border-radius: 5px;
   border-width: 0.5px;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   font-size: 15px;
 }
@@ -133,7 +155,7 @@
 }
 
 #invite-btn {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   position: absolute;
   left: 82.5%;
@@ -154,12 +176,79 @@
   background-color: #171824;
 }
 
+/* Room main */
+
 main {
   position: relative;
 }
+
+/* YouTube Player */
 
 #player {
   position: absolute;
   top: 20px;
   left: 50px;
+}
+
+/* Chat */
+
+.chat-box {
+  position: absolute;
+  top: 20px;
+  left: 75%;
+  width: 420px;
+}
+
+.chat-header {
+  position: relative;
+  background-color: #131313;
+  color: #fff;
+  width: 420px;
+  padding-bottom: 40px;
+  border-radius: 6px;
+}
+
+#room-name {
+  position: absolute;
+  left: 50%;
+  margin-top: 5px;
+  margin-left: -50px;
+  font-size: 20px;
+}
+
+.chat-area {
+  height: 640px;
+  background-color: #1a1a1a;
+  overflow-y: scroll;
+  scrollbar-color: dark;
+}
+
+.chat-msg {
+  margin-left: 15px;
+}
+
+.chat-msg .meta {
+  color: #fff;
+  margin-bottom: 0px;
+}
+
+.chat-msg span {
+  color: #42c3f6;
+  font-size: 12px;
+}
+
+.chat-msg .msg-text {
+  color: #9f9f9f;
+  margin-top: 0px;
+  font-size: 14px;
+}
+
+#chat-input {
+  width: 410px;
+  background-color: #262626;
+  color: #fff;
+  padding: 12px 0px 12px 10px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
 }
