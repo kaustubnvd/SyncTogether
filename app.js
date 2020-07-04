@@ -29,6 +29,7 @@ io.on('connection', (socket) => {
     socket.join(room);
     // Map their socket id to their nickname
     rooms[room].users[socket.id] = name;
+    socket.to(room).broadcast.emit('new-user', name);
   });
 
   // A new user's YouTube player has loaded
@@ -73,4 +74,26 @@ io.on('connection', (socket) => {
       time: msgTime,
     });
   });
+
+  socket.on('disconnect', () => {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const room = Object.entries(rooms).find(([roomName, room]) => {
+        // Can the same socket be in multiple rooms?
+        return socket.id in room.users;
+      })[0]; // First element in the array is the roomName
+      const name = rooms[room].users[socket.id];
+      socket.to(room).broadcast.emit('user-disconnect', name);
+      delete rooms[room].users[socket.id];
+      // Everyone in the room left
+      if (Object.values(rooms[room].users).length === 0) {
+        delete rooms[room];
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  });
+
 });
+
+

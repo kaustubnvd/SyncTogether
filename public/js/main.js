@@ -2,10 +2,69 @@
 const socket = io(); // Client controller
 
 // eslint-disable-next-line no-undef
-const name = nickname || prompt('Enter a nickname:'); // Ask for name if room is accessed through URL
+const name = nickname || prompt('Enter a nickname:') || backup; // Ask for name if room is accessed through URL
+
+addUserToParticipants(name, true); // Add current user
+
+// Add a newly joined user to participants
+function addUserToParticipants(user, self) {
+  const userElement = document.createElement('div');
+  const icon = document.createElement('i');
+  const iconName = self ? 'account_circle' : 'person';
+  const iconText = document.createTextNode(iconName);
+  icon.className = 'material-icons';
+  icon.append(iconText);
+  userElement.textContent = user;
+  userElement.id = user;
+  userElement.classList.add('user');
+  if (self) {
+    userElement.classList.add('self-highlight');
+  }
+  userElement.prepend(icon);
+  const participants = document.querySelector('.participant-box');
+  participants.append(userElement);
+}
+
 // eslint-disable-next-line no-undef
 const room = roomName; // defined in room.ejs
 socket.emit('new-user', name, room);
+
+const chatArea = document.querySelector('.chat-area');
+
+socket.on('new-user', name => {
+  const JOIN = true;
+  addUserStatusToChat(name, JOIN);
+  addUserToParticipants(name, false);
+});
+
+socket.on('user-disconnect', name => {
+  const LEAVE = false;
+  addUserStatusToChat(name, LEAVE);
+  removeUserFromParticipants(name);
+});
+
+// Add user join/leave status (with arrow icon) to the chat
+function addUserStatusToChat(name, join) {
+  const userStatus = document.createElement('div');
+  const icon = document.createElement('i');
+  const iconText = document.createTextNode('arrow_right_alt');
+  icon.append(iconText);
+  if (join) {
+    icon.className = 'material-icons join-icon'; // Blue arrow
+    userStatus.textContent = `${name} has joined the room`;
+  } else {
+    icon.className = 'material-icons leave-icon'; // Red arrow
+    userStatus.textContent = `${name} has left the room`;
+  }
+  userStatus.classList.add('status-msg');
+  userStatus.prepend(icon);
+  chatArea.append(userStatus);
+}
+
+function removeUserFromParticipants(name) {
+  const user = document.getElementById(name);
+  user.remove();
+}
 
 /* YouTube player */
 
@@ -95,7 +154,7 @@ search.addEventListener('keyup', (e) => {
     socket.emit('calibrate', room);
     // Loads a new video, with the video id extracted from the query params
     player.loadVideoById(url.searchParams.get('v'), 0, 'large');
-    setTimeout(() => socket.emit('new-video', url, room), 1000); // Doesn't run synchronously at times, so slight delay necessary
+    setTimeout(() => socket.emit('new-video', url, room), 0); // Doesn't run synchronously at times, so slight delay necessary (changed delay from 1000 -> 0)
     userPause = true; // Edge case: The first video loaded does NOT pause as the first step, so this line reverts it
   }
 });
@@ -153,7 +212,6 @@ socket.on('new-video', (videoUrl) => {
 
 /* Chat */
 
-const chatArea = document.querySelector('.chat-area');
 const chatInput = document.getElementById('chat-input');
 
 chatInput.addEventListener('keyup', (e) => {

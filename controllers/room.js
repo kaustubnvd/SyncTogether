@@ -1,5 +1,7 @@
 const rooms = require('../models/rooms');
+const { uniqueNamesGenerator, starWars } = require('unique-names-generator');
 let nickname; // Global variable to pass to next request
+let backupNickname; // If the user doesn't enter a username, a randomly generated Star Wars character name is used as backup 
 
 exports.createRoom = (req, res) => {
 
@@ -22,6 +24,7 @@ exports.joinRoom = (req, res) => {
   if (!(roomName in rooms)) {
     return res.redirect('/');
   }
-  res.render('room', { roomName: roomName, nickname: nickname });
+  backupNickname = uniqueNamesGenerator({dictionaries: [starWars], length: 1});
+  res.render('room', { roomName: roomName, nickname: nickname, backup: backupNickname, users: rooms[roomName].users });
   nickname = undefined; // So that next request doesn't use the previous name
 };

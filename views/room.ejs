@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <!-- Make the following variables available in main.js -->
-    <script> const nickname = "<%= nickname %>"; const roomName = "<%= roomName %>"; </script>
+    <script> const nickname = "<%= nickname %>"; const roomName = "<%= roomName %>"; const backup = "<%= backup %>" </script>
     <script defer src="https://www.youtube.com/iframe_api"></script>
     <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="/js/main.js"></script>
@@ -29,6 +29,12 @@
         </div>
         <div class="chat-area"></div>
         <input id="chat-input" type="text" placeholder="Enter Message" autocomplete="off">
+      </div>
+      <div class="participant-box">
+        <span>Participants</span>
+        <% for(let user in users) { %>
+          <div id="<%= users[user] %>" class="user"><i class="material-icons logo">person</i><%= users[user] %></div>
+        <% } %>
       </div>
     </main>
   </body>
