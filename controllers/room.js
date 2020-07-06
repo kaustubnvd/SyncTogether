@@ -9,6 +9,7 @@ exports.createRoom = (req, res) => {
   if (!(req.body.isJoining === 'on')) {
     // Trying to create a room that already exists
     if (req.body.room in rooms) {
+      req.flash('error', 'Someone is already using that room');
       return res.redirect('/');
     }
     // Create the room if the user isn't joining a pre-exisiting one
@@ -22,6 +23,7 @@ exports.joinRoom = (req, res) => {
   const roomName = req.params.room;
   // Trying to join a room that doesn't exist
   if (!(roomName in rooms)) {
+    req.flash('error', 'That room doesn\'t exist yet');
     return res.redirect('/');
   }
   backupNickname = uniqueNamesGenerator({dictionaries: [starWars], length: 1});

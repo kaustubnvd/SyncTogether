@@ -1,6 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const moment = require('moment');
+const session = require('express-session');
+const flash = require('connect-flash');
+
 const http = require('http');
 const path = require('path');
 
@@ -14,6 +17,12 @@ app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(
+  session({ secret: 'sambar vadai', resave: false, saveUninitialized: false })
+);
+
+app.use(flash()); // Stores flash messages in the session
 
 app.use(require('./routes/home'));
 app.use(require('./routes/room'));
@@ -93,7 +102,4 @@ io.on('connection', (socket) => {
       console.error(err);
     }
   });
-
 });
-
-

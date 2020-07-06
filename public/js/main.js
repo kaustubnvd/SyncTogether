@@ -241,3 +241,42 @@ function addMessage(user, message, time) {
   messageElem.innerHTML = `<p class="meta">${user} <span>${time}</span></p><p class="msg-text">${message}</p>`; // TODO: Fix XSS
   chatArea.append(messageElem);
 }
+
+/* Invite Friends */
+
+const inviteBtn = document.getElementById('invite-btn');
+const inviteModal = document.querySelector('.invite-modal');
+const inviteLink = document.getElementById('invite-link');
+const copyBtn = document.getElementById('copy');
+const inviteShortcut = document.getElementById('invite-shortcut');
+const html = document.querySelector('html');
+
+// 'Invite Friends' button
+inviteBtn.addEventListener('click', () => {
+  inviteModal.classList.toggle('show-modal');
+});
+
+// Small copy button inside modal
+copyBtn.addEventListener('click', e => {
+  e.preventDefault();
+  inviteLink.select();
+  document.execCommand('copy');
+  inviteLink.blur();
+});
+
+// Shortcut icon link button
+inviteShortcut.addEventListener('click', e => {
+  e.preventDefault();
+  window.navigator.clipboard.writeText(`https://synctogether.tv/${room}`); // May not be supported by all browsers
+});
+
+html.addEventListener('click', e => {
+  // Ignore clicks on the modal
+  if (e.target.classList.contains('ignore-click')) {
+    return;
+  }
+  if (inviteModal.classList.contains('show-modal')) {
+    // Hide the modal when clicking outside
+    inviteModal.classList.remove('show-modal');
+  }
+});

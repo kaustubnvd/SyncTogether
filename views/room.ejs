@@ -7,17 +7,27 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <!-- Make the following variables available in main.js -->
-    <script> const nickname = "<%= nickname %>"; const roomName = "<%= roomName %>"; const backup = "<%= backup %>" </script>
+    <script> const nickname = "<%= nickname %>"; const roomName = "<%= roomName %>"; const backup = "<%= backup %>"; </script>
     <script defer src="https://www.youtube.com/iframe_api"></script>
     <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="/js/main.js"></script>
   </head>
   <body class="room-body">
     <header class="room-header">
+      <!-- Logo -->
       <i class="material-icons logo">loop</i>
       <a href="/" id="room-title">SyncTogether</a>
+      <!-- Search Bar -->
       <input id="searchbar" type="text" placeholder="Search for YouTube video or enter URL"/>
-      <button id="invite-btn"><i class="material-icons invite-icon">person_add_alt_1</i>Invite Friends</button>
+      <!-- Invite -->
+      <button id="invite-btn" class="ignore-click"><i class="material-icons invite-icon ignore-click">person_add_alt_1</i>Invite Friends</button>
+      <button id="invite-shortcut"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABmJLR0QA/wD/AP+gvaeTAAAB/UlEQVRIia2WsWsUQRTGv7mNHNooklohmgMFo0kfey0CCmJn/gSxDDmCiQFTKFgKQbhYiE1UUtgIFoJFRGOiWNheJ+bKgMWFn8XMwbthZ3cvm6/anffN++3svvfunGoKyCTdkXRLUktSX9KepJfOuU918w8gLeAHaW0AzbqQGaBXABmoI0nuqBBJHySdNctfJb2T1JQ0L+mciV0/rpM8Dt9q4BkHuia+fhyQhwnvivFsN0aAnJZ0W/717IblZedcLkjSobnOEp5K4MsFsTFgx5zo1ViFhE7STUlz8n3yT75PNgq2rUqaNvdvyyAXgC+Jsu0Dq0Aj2rMU+XZiTwyZAfYTEKt7Zk87iu0DF8sgcXXtAU+AdeDArN8PexYjfw+YHhWywnCfTAAd4ClwEljIOcm1USELwCngGX52TRh/BjyK/H+Bq6NCFkPsgVk7AF6E0/zMgUwVQVo5kLaJz1OuP8CVIkiG/9BWS5GngS/lfgLyGTifhIQkd6NNawXeS/gB+h74CDwHbuCbuljAawP5hqmuHG9y7JSpIWnS3G855w7zjPgp/QvYxRfDGnCmMgnYNidaTkGi19vD//hVF77TB+oC4yaWhSevBwnJZqNEXXwTthke9UeHGFiHctWDBFCzBPYdmCzPlNZQ/QOz8v9gpiSdkPRb0htJm6lqrKr/DrH8f1uJ5qYAAAAASUVORK5CYII="></button>
+      <div class="invite-modal ignore-click">
+        <p class="ignore-click">Invite Link</p>
+        <p id="invite-sub" class="ignore-click">Copy the following link and share it with your friends.</p>
+        <input id="invite-link" class="ignore-click" type="text" value="https://synctogether.tv/<%=roomName%>" spellcheck="false" readonly>
+        <button id="copy" class="ignore-click">Copy</button>
+      </div>
     </header>
     <main>
       <!-- YouTube player -->
@@ -30,6 +40,7 @@
         <div class="chat-area"></div>
         <input id="chat-input" type="text" placeholder="Enter Message" autocomplete="off">
       </div>
+      <!-- Participants -->
       <div class="participant-box">
         <span>Participants</span>
         <% for(let user in users) { %>
@@ -37,5 +48,7 @@
         <% } %>
       </div>
     </main>
+    <!-- Invite link icon credits -->
+    <a href="https://icons8.com/icon/91/link" style="display: none;">Link icon by Icons8</a>
   </body>
 </html>

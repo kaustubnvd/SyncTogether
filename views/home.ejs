@@ -15,6 +15,10 @@
     </header>
     <main>
       <div class="home-card">
+        <!-- Flash Message (array) -->
+        <% if (errorMessage.length > 0) { %>
+          <div class="error-msg"><%= errorMessage[0] %></div>
+        <% } %>
         <form class="form-control" action="/room" method="POST">
           <label for="nickname">Nickname:</label>
           <input class="form-input" type="text" id="nickname" name="nickname" placeholder="shadowcrux, parth8a, !xobile, sanjrang12, etc." required><br>

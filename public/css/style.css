@@ -85,6 +85,18 @@
   background-color: #861f1f;
 }
 
+.error-msg {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: -15px;
+  width: 75%;
+  border: 1px solid #f00;
+  border-radius: 3px;
+  text-align: center;
+  padding: 10px;
+  background: rgb(255, 176, 176);
+}
+
 ::placeholder {
   color: #d1d1d1;
 }
@@ -176,6 +188,99 @@
   background-color: #171824;
 }
 
+#invite-shortcut {
+  position: absolute;
+  left: 92%;
+  top: 12px;
+  background-color: #2b2d42;
+  color: #fff;
+  padding: 2px 5px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+#invite-shortcut img {
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+}
+
+#invite-shortcut:hover {
+  background-color: #1f2030;
+}
+
+#invite-shortcut:active {
+  background-color: #171824;
+}
+
+.invite-modal {
+  display: none;
+  position: absolute;
+  top: 55px;
+  left: 73.8%;
+  background-color: #fff;
+  text-align: center;
+  width: 420px;
+  height: 115px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-bottom: 50px;
+  z-index: 2;
+}
+
+.show-modal {
+  display: block;
+}
+
+.invite-modal p {
+  margin: 0px 0px 0px 4px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  color: #131313;
+}
+
+#invite-sub {
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: normal;
+  color: #656565;
+}
+
+.invite-modal input {
+  text-align: left;
+  width: 400px;
+  margin-top: 8px;
+  padding: 15px 5px;
+  border-radius: 4px;
+  border-color: #d4d4d4;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 16px;
+  outline: none;
+}
+
+.invite-modal::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 49%;
+  top: -15px;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 15px solid #fff;
+}
+
+#copy {
+  position: absolute;
+  top: 77px;
+  left: 80%;
+}
+
 /* Room main */
 
 main {
@@ -241,13 +346,13 @@ main {
 }
 
 .join-icon {
-  color:#42c3f6;
+  color: #42c3f6;
   display: inline-flex;
   vertical-align: middle;
 }
 
 .leave-icon {
-  color:#FF0000;
+  color: #ff0000;
   display: inline-flex;
   vertical-align: middle;
 }
@@ -300,5 +405,5 @@ main {
 }
 
 .self-highlight {
-  color: #7E7E7E
+  color: #7e7e7e;
 }
