@@ -152,6 +152,7 @@ search.addEventListener('keyup', (e) => {
     preventPlay = true; // When the other users load the video, they will automatically play
     preventPause = true;  // So it's not required to emit a play/pause event
     socket.emit('calibrate', room);
+    socket.emit('video-info', url.href, room);
     // Loads a new video, with the video id extracted from the query params
     player.loadVideoById(url.searchParams.get('v'), 0, 'large');
     setTimeout(() => socket.emit('new-video', url, room), 0); // Doesn't run synchronously at times, so slight delay necessary (changed delay from 1000 -> 0)
@@ -164,6 +165,13 @@ socket.on('new-user-loaded', (newUser) => {
   const videoUrl = player.getVideoUrl();
   const elapsedTime = player.getCurrentTime();
   socket.emit('current-video', videoUrl, elapsedTime, newUser);
+});
+
+socket.on('video-info', videoInfo => {
+  const videoTitle = document.getElementById('video-title');
+  const videoDate = document.getElementById('video-date');
+  videoTitle.textContent = videoInfo.title;
+  videoDate.textContent = videoInfo.datePublished;
 });
 
 // A new users loads the currently playing video in the room

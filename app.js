@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const session = require('express-session');
 const flash = require('connect-flash');
+const ytScraper = require('yt-scraper');
 
 const http = require('http');
 const path = require('path');
@@ -47,9 +48,32 @@ io.on('connection', (socket) => {
     io.to(participant).emit('new-user-loaded', socket.id);
   });
 
+  // Gets the YouTube video info for a given video url
+  async function fetchVideoInfo(videoUrl) {
+    try {
+      const videoInfo = await ytScraper.videoInfo(videoUrl);
+      videoInfo.datePublished = moment(videoInfo.dates.published).format('ll');
+      return videoInfo;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  socket.on('video-info', async (videoUrl, room) => {
+    const videoInfo = await fetchVideoInfo(videoUrl);
+    io.in(room).emit('video-info', videoInfo);
+  });
+
   // Send the new user the meta-data of the current video playing
-  socket.on('current-video', (videoUrl, elapsedTime, newUser) => {
+  socket.on('current-video', async (videoUrl, elapsedTime, newUser) => {
+    const videoId = new URL(videoUrl).searchParams.get('v');
+    // No video is loaded
+    if (!videoId) {
+      return;
+    }
     io.to(newUser).emit('current-video', videoUrl, elapsedTime);
+    const videoInfo = await fetchVideoInfo(videoUrl);
+    io.to(newUser).emit('video-info', videoInfo);
   });
 
   // A user resumes the video

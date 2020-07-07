@@ -373,6 +373,31 @@ main {
   border-radius: 4px;
 }
 
+/* YouTube Meta Info */
+
+.youtube-meta {
+  position: absolute;
+  top: 750px;
+  left: 50px;
+  color: #fff;
+}
+
+#video-title {
+  font-size:28px;
+  margin-bottom: 10px;
+}
+
+
+#divider {
+  position: absolute;
+  top: 820px;
+  left: 50px;
+  border: 2px solid #707070;
+  width: 1282px;
+}
+
+/* Participants */
+
 .participant-box {
   position: absolute;
   top: 780px;
