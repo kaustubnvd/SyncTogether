@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -27,7 +27,8 @@
 
 .home-card {
   margin: auto;
-  width: 700px;
+  width: 90%;
+  max-width: 700px;
   height: 400px;
   border-color: #707070;
   border-width: 1px;
@@ -144,7 +145,6 @@
   border-width: 0.5px;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
   font-size: 15px;
 }
 
@@ -291,6 +291,7 @@ main {
 
 #player {
   position: absolute;
+  width: 66.8% ;
   top: 20px;
   left: 50px;
 }
@@ -393,7 +394,78 @@ main {
   top: 820px;
   left: 50px;
   border: 2px solid #707070;
-  width: 1282px;
+  width: 66.8%;
+}
+
+/* Search results */
+
+.search-results {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 25px;
+  top: 850px;
+  left: 72px;
+  margin-bottom: 100px;
+  color: #fff;
+}
+
+.search-results p {
+  font-size: larger;
+  font-weight: 300;
+}
+
+#search-query-info {
+  grid-column: span 4;  
+}
+
+#search-query {
+  font-weight: 500;
+}
+
+.search-item {
+  margin: 0px;
+  padding: 0px;
+  border-radius: 4px;
+}
+
+
+.search-item img {
+  display: block;
+  width: 280px;
+  height: 157.5px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.search-item img:hover {
+  background: #0b0c0e;
+  opacity: .4;
+}
+
+.search-item-info {
+  background-color: #000;
+  padding: 10px;
+  margin: 0px;
+  width: 260px;
+}
+
+#search-title {
+  font-size: 14px;
+}
+
+#channel {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.api-error {
+  position: absolute;
+  top: 850px;
+  left: 75px;
+  color: #fff;
 }
 
 /* Participants */

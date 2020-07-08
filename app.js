@@ -4,6 +4,8 @@ const moment = require('moment');
 const session = require('express-session');
 const flash = require('connect-flash');
 const ytScraper = require('yt-scraper');
+const youtubeSearch = require('youtube-search');
+require('dotenv').config();
 
 const http = require('http');
 const path = require('path');
@@ -89,6 +91,17 @@ io.on('connection', (socket) => {
   // Prevents unnecessary events from firing
   socket.on('calibrate', (room) => {
     socket.to(room).broadcast.emit('calibrate');
+  });
+
+  socket.on('yt-search', search => {
+    const options = {maxResults: 8, key: process.env.YOUTUBE_API_KEY};
+    youtubeSearch(search, options, (err, results) => {
+      if (err) {
+        // 10,000 queries per day
+        return socket.emit('api-quota-reached');
+      }
+      socket.emit('yt-search', search, results);
+    });
   });
 
   // A user loads a new video in the room
