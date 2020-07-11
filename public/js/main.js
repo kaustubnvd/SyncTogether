@@ -74,7 +74,7 @@ let player;
 function onYouTubeIframeAPIReady() {
   // eslint-disable-next-line no-undef
   player = new YT.Player('player', {
-    height: '719',
+    height: '722',
     width: '1283',
     videoId: '',
     events: { onReady: onPlayerReady, onStateChange: onPlayerStateChange },
@@ -224,15 +224,19 @@ socket.on('new-video', (videoUrl) => {
 /* Search Results */
 
 socket.on('yt-search', (searchQuery, searchResults) => {
+  const previousQuery = document.getElementById('search-query-info');
   const previousResults = document.querySelector('.search-results');
   if (previousResults) {
+    previousQuery.remove();
     previousResults.remove();
   }
   const allResults = document.createElement('div');
   // Displays the query that corresponds to the search results
   const searchQueryInfo = createSearchQueryInfo(searchQuery);
   allResults.classList.add('search-results');
-  allResults.append(searchQueryInfo);
+  const column1 = document.querySelector('.col-1');
+  column1.after(searchQueryInfo);
+  // allResults.append(searchQueryInfo);
   searchResults.forEach((searchResult) => {
     const searchTitle = createSearchTitle(searchResult);
     const searchChannel = createSearchChannel(searchResult);
@@ -243,8 +247,8 @@ socket.on('yt-search', (searchQuery, searchResults) => {
     allResults.append(searchItem);
   });
   // Meta information of the current video playing
-  const ytMeta = document.querySelector('.youtube-meta');
-  ytMeta.after(allResults);
+  const wrapper = document.querySelector('.wrapper');
+  wrapper.append(allResults);
   searchQueryInfo.scrollIntoView({ behavior: 'smooth' });
 });
 
@@ -253,6 +257,7 @@ function createSearchItem(searchResult, searchItemInfo) {
   const searchItem = document.createElement('div');
   const thumbnail = document.createElement('img');
   const videoLink = createVideoLink(searchResult);
+  const player = document.getElementById('player');
   searchItem.classList.add('search-item');
   // Avoids black bars
   thumbnail.src = searchResult.thumbnails.medium.url;
@@ -262,6 +267,7 @@ function createSearchItem(searchResult, searchItemInfo) {
   searchItem.onclick = () => {
     // The last child refers to the hidden video link
     playVideoByUrl(searchItem.lastElementChild.textContent);
+    player.scrollIntoView({behavior:'smooth'});
   };
   return searchItem;
 }
@@ -315,9 +321,9 @@ socket.on('api-quota-reached', () => {
   }
   const errorMessage = document.createElement('p');
   errorMessage.classList = 'api-error';
-  errorMessage.textContent = 'YouTube search unavailables. Please use a video URL instead.';
-  const ytMeta = document.querySelector('.youtube-meta');
-  ytMeta.after(errorMessage);
+  errorMessage.textContent = 'YouTube search unavailable. Please use a video URL instead.';
+  const column1 = document.querySelector('.col-1');
+  column1.after(errorMessage);
 });
 
 /* Chat */
@@ -375,10 +381,10 @@ copyBtn.addEventListener('click', (e) => {
 });
 
 // Shortcut icon link button
-inviteShortcut.addEventListener('click', (e) => {
+inviteShortcut.onclick = (e) => {
   e.preventDefault();
   window.navigator.clipboard.writeText(`https://synctogether.tv/${room}`); // May not be supported by all browsers
-});
+};
 
 html.addEventListener('click', (e) => {
   // Ignore clicks on the modal

@@ -40,7 +40,7 @@
 .form-control {
   margin-top: 50px;
   margin-left: 10%;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -76,6 +76,7 @@
   border-radius: 4px;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .form-btn:hover {
@@ -112,40 +113,49 @@
 /* Room Header */
 
 .room-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: #0b0c0e;
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  padding: 14px;
+  padding: 0.5em 0em;
 }
 
 #room-title {
-  font-size: 22px;
-  position: relative;
-  bottom: 4px;
+  font-size: 1.375rem;
   text-decoration: none;
   color: #fff;
 }
 
 .logo {
-  position: relative;
-  top: 1px;
-  margin-left: 38px;
+  margin-left: -5em;
+}
+
+.sync-logo {
+  display: inline-flex;
+  vertical-align: middle;
+  padding-bottom: 0.2em;
+}
+
+.material-icons.sync-logo {
+  font-size: 1.375rem;
+}
+
+.searchbar {
+  width: 44.3%;
 }
 
 #searchbar {
-  position: absolute;
-  left: 24%;
-  top: 10px;
   outline: none;
-  width: 850px;
+  width: 100%;
   background-color: #262626;
   border-color: transparent;
-  padding: 8px 0px 8px 10px;
+  padding: 0.5em 0.625em;
+  margin-left: -0.625em;
   border-radius: 5px;
   border-width: 0.5px;
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
+  font-size: 1rem;
 }
 
 #searchbar:focus {
@@ -155,29 +165,32 @@
 }
 
 ::placeholder {
-  font-size: 15px;
+  font-size: 1rem;
   color: #a7a7a7;
   padding-left: 0px;
 }
 
 .invite-icon {
-  position: absolute;
-  left: 20px;
-  bottom: 6px;
+  display: inline-flex;
+  vertical-align: middle;
+  padding: 0em 0.3em 0.2em 0em;
+}
+
+.invite {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 #invite-btn {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  position: absolute;
-  left: 81.2%;
-  top: 12px;
+  font-size: 1rem;
   background-color: #2b2d42;
   color: #fff;
-  padding: 8px 30px 8px 50px;
+  padding: 0.3em 2em;
   border-radius: 5px;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 #invite-btn:hover {
@@ -189,21 +202,20 @@
 }
 
 #invite-shortcut {
-  position: absolute;
-  left: 92%;
-  top: 12px;
   background-color: #2b2d42;
   color: #fff;
-  padding: 2px 5px;
+  padding: 0.1em 0.3em;
+  margin-left: 0.5em;
   border: none;
   outline: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 #invite-shortcut img {
   width: 20px;
   height: 20px;
-  margin: 4px;
+  margin: 0.375em;
 }
 
 #invite-shortcut:hover {
@@ -217,15 +229,13 @@
 .invite-modal {
   display: none;
   position: absolute;
-  top: 55px;
-  left: 73.8%;
+  top: 45px;
+  left: -85px;
   background-color: #fff;
   text-align: center;
-  width: 420px;
-  height: 115px;
-  padding: 10px 20px;
+  width: 150%;
+  padding: 0.625em 0em;
   border-radius: 6px;
-  margin-bottom: 50px;
   z-index: 2;
 }
 
@@ -234,15 +244,16 @@
 }
 
 .invite-modal p {
-  margin: 0px 0px 0px 4px;
+  margin: 0;
+  margin-left: 15px;
   text-align: left;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   color: #131313;
 }
 
 #invite-sub {
-  font-size: 14px;
+  font-size: 0.8rem;
   margin-top: 5px;
   font-weight: normal;
   color: #656565;
@@ -250,22 +261,23 @@
 
 .invite-modal input {
   text-align: left;
-  width: 400px;
+  width: 90%;
   margin-top: 8px;
   padding: 15px 5px;
   border-radius: 4px;
   border-color: #d4d4d4;
   border-style: solid;
   border-width: 1px;
-  font-size: 16px;
+  font-size: 1rem;
   outline: none;
 }
 
 .invite-modal::before {
+  /* Triangle */
   content: '';
   display: block;
   position: absolute;
-  left: 49%;
+  left: 188px;
   top: -15px;
   z-index: 3;
   width: 0;
@@ -276,51 +288,83 @@
 }
 
 #copy {
-  position: absolute;
-  top: 77px;
-  left: 80%;
+  position: static;
+  margin-top: 0.5em;
+  cursor: pointer;
 }
 
-/* Room main */
+.col-1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 1.25em;
+}
 
-main {
-  position: relative;
+.col-2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 1.25em;
 }
 
 /* YouTube Player */
 
+.yt-video {
+  width: 70%;
+  height: 0;
+  padding-bottom: 39.25%;
+  margin-bottom: 10em;
+  position: relative;
+}
+
 #player {
   position: absolute;
-  width: 66.8% ;
-  top: 20px;
-  left: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+/* YouTube Meta Info */
+
+.youtube-meta {
+  position: absolute;
+  top: 100%;
+  color: #fff;
+  width: 100%;
+}
+
+#video-title {
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+#divider {
+  position: absolute;
+  top: 100%;
+  border: 2px solid #707070;
+  width: 100%;
 }
 
 /* Chat */
 
 .chat-box {
-  position: absolute;
-  top: 20px;
-  left: 75%;
-  width: 420px;
+  width: 22.82%;
 }
 
 .chat-header {
-  position: relative;
   background-color: #131313;
   color: #fff;
-  width: 420px;
   padding: 10px 0px;
   border-radius: 6px;
   text-align: center;
 }
 
 #room-name {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .chat-area {
-  height: 640px;
+  height: 0;
+  padding-bottom: 152%;
   background-color: #1a1a1a;
   overflow-y: scroll;
   scrollbar-color: dark;
@@ -337,13 +381,13 @@ main {
 
 .chat-msg span {
   color: #42c3f6;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .chat-msg .msg-text {
   color: #9f9f9f;
   margin-top: 0px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .join-icon {
@@ -361,11 +405,11 @@ main {
 .status-msg {
   margin-left: 15px;
   color: #9f9f9f;
-  font-size: 14px;
+  font-size: .875rem;
 }
 
 #chat-input {
-  width: 410px;
+  width: 98%;
   background-color: #262626;
   color: #fff;
   padding: 12px 0px 12px 10px;
@@ -374,40 +418,19 @@ main {
   border-radius: 4px;
 }
 
-/* YouTube Meta Info */
-
-.youtube-meta {
-  position: absolute;
-  top: 750px;
-  left: 50px;
-  color: #fff;
-}
-
-#video-title {
-  font-size:28px;
-  margin-bottom: 10px;
-}
-
-
-#divider {
-  position: absolute;
-  top: 820px;
-  left: 50px;
-  border: 2px solid #707070;
-  width: 66.8%;
-}
-
 /* Search results */
 
+.wrapper {
+  width: 70%;
+}
+
 .search-results {
-  position: absolute;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 25px;
-  top: 850px;
-  left: 72px;
   margin-bottom: 100px;
   color: #fff;
+  width: 100%;
 }
 
 .search-results p {
@@ -416,7 +439,10 @@ main {
 }
 
 #search-query-info {
-  grid-column: span 4;  
+  color: #fff;
+  font-weight: 300;
+  width: 70%;
+  text-align: center;
 }
 
 #search-query {
@@ -427,27 +453,27 @@ main {
   margin: 0px;
   padding: 0px;
   border-radius: 4px;
+  width: 100%;
 }
-
 
 .search-item img {
   display: block;
-  width: 280px;
+  width: 100%;
   height: 157.5px;
   margin: 0px;
   padding: 0px;
+  cursor: pointer;
 }
 
 .search-item img:hover {
   background: #0b0c0e;
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .search-item-info {
   background-color: #000;
   padding: 10px;
   margin: 0px;
-  width: 260px;
 }
 
 #search-title {
@@ -471,20 +497,18 @@ main {
 /* Participants */
 
 .participant-box {
-  position: absolute;
-  top: 780px;
-  left: 73.8%;
   background-color: #fff;
   text-align: center;
-  width: 420px;
+  width: 22.82%;
   min-height: 100px;
   padding: 10px 20px;
   border-radius: 6px;
+  margin-top: -8em;
   margin-bottom: 50px;
 }
 
 .participant-box span {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -503,4 +527,165 @@ main {
 
 .self-highlight {
   color: #7e7e7e;
+}
+
+/* Media Queries */
+
+@media (max-width: 1530px) {
+  .logo {
+    margin-left: -3em;
+  }
+}
+
+/* Tablets Landscape */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+  .logo {
+    margin-left: -1em;
+  }
+}
+
+/* Tablets Portrait */
+
+@media (max-width: 992px) {
+  html {
+    font-size: 13px;
+  }
+  #room-title,
+  .material-icons.sync-logo {
+    font-size: 1.1rem;
+  }
+  .logo {
+    margin-left: 0;
+  }
+  #invite-btn {
+    padding: 0.3em 1em;
+  }
+  .col-1 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-2 {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .yt-video {
+    width: 80%;
+    padding-bottom: 45%;
+  }
+  .chat-box {
+    width: 80%;
+  }
+  .chat-area {
+    height: 210px;
+    padding-bottom: 0;
+  }
+  #search-query-info {
+    width: 100%;
+    visibility: hidden;
+  }
+  .participant-box {
+    margin-top: 0em;
+    width: 50%;
+  }
+}
+
+/* Phones Landscape */
+@media (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+  #invite-shortcut {
+    display: none;
+  }
+  .invite-modal p {
+    margin-left: 8px;
+  }
+  .invite-modal::before {
+    left: 180px;
+  }
+}
+
+/* Phones Portrait */
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+  .col-1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .col-2 {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .room-header {
+    justify-content: space-evenly;
+  }
+  .searchbar {
+    width: 80%;
+  }
+
+  .chat-area {
+    padding-bottom: 0;
+    height: 210px;
+  }
+
+  .youtube-meta {
+    width: 90%;
+    padding-top: 1em;
+    padding-left: 0.9em;
+  }
+
+  #searchbar {
+    padding: 0.8em 0.625em;
+    margin-left: 0;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  #invite-btn {
+    display: none;
+  }
+
+  .invite-modal {
+    display: none;
+  }
+
+  #invite-shortcut {
+    margin-left: 1em;
+    display: block;
+  }
+
+  .yt-video {
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-bottom: 8em;
+  }
+
+  #video-title {
+    font-size: 1.3rem;
+  }
+
+  .participant-box {
+    margin-top: 0em;
+  }
+
+  .chat-box {
+    width: 90%;
+  }
+
+  .participant-box {
+    width: 80%;
+  }
 }
