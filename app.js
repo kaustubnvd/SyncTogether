@@ -139,4 +139,6 @@ io.on('connection', (socket) => {
       console.error(err);
     }
   });
+
+  socket.on('error', () => console.log('error'));
 });

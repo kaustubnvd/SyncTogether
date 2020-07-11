@@ -114,6 +114,9 @@ const BUFFER = 3;
 // Reacts to YouTube player state changes
 function controlVideo(playerState) {
   switch (playerState) {
+    case LOAD:
+      const ytPlayer = document.getElementById('player');
+      ytPlayer.style.pointerEvents = 'auto';
     case PLAY:
       if (!preventPlay) {
         socket.emit('resume', player.getCurrentTime(), room);
