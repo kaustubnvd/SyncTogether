@@ -3,6 +3,7 @@ const socket = io(); // Client controller
 
 // eslint-disable-next-line no-undef
 const name = nickname || prompt('Enter a nickname:') || backup; // Ask for name if room is accessed through URL
+onYouTubeIframeAPIReady(); 
 
 addUserToParticipants(name, true); // Add current user
 

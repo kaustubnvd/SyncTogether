@@ -19,6 +19,7 @@
       const roomName = '<%= roomName %>';
       const backup = '<%= backup %>';
     </script>
+    <script defer src="https://www.youtube.com/iframe_api"></script>
     <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="/js/main.js"></script>
   </head>
@@ -75,7 +76,6 @@
         <div class="yt-video">
           <!-- YouTube player -->
           <div id="player"></div>
-          <script async src="https://www.youtube.com/iframe_api"></script>
           <!-- YouTube video info -->
           <div class="youtube-meta">
             <div id="video-title"></div>
