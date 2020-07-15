@@ -364,8 +364,7 @@
 }
 
 .chat-area {
-  height: 0;
-  padding-bottom: 152%;
+  height: 640px;
   background-color: #1a1a1a;
   overflow-y: scroll;
   scrollbar-color: dark;
@@ -532,9 +531,25 @@
 
 /* Media Queries */
 
+@media (max-width: 1720px) {
+  .chat-area {
+    height: 580px;
+  }
+}
+
 @media (max-width: 1530px) {
   .logo {
     margin-left: -3em;
+  }
+  .chat-area {
+    height: 480px;
+  }
+}
+
+
+@media (max-width: 1300px) {
+  .chat-area {
+    height: 420px;
   }
 }
 
@@ -546,6 +561,12 @@
   }
   .logo {
     margin-left: -1em;
+  }
+}
+
+@media (max-width: 1170px) {
+  .chat-area {
+    height: 370px;
   }
 }
 

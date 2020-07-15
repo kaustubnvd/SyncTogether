@@ -112,12 +112,11 @@ io.on('connection', (socket) => {
   // A user sends a chat message
   socket.on('chat-message', (message, room) => {
     const nickname = rooms[room].users[socket.id]; // The socket.id maps to the username
-    const msgTime = moment().format('h:mm a'); // When the message was sent
+    // const msgTime = moment().format('h:mm a'); // When the message was sent
     // Emits to all sockets in the room, including the sender
     io.in(room).emit('chat-message', {
       name: nickname,
       message: message,
-      time: msgTime,
     });
   });
 
