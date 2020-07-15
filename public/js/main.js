@@ -401,7 +401,6 @@ html.addEventListener('click', (e) => {
   }
 });
 
-const playerElement = document.getElementById('player');
-if (playerElement.tagName === 'DIV') {
-  onYouTubeIframeAPIReady(); 
-}
+
+onYouTubeIframeAPIReady(); 
+
