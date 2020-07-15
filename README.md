@@ -14,7 +14,7 @@
 <a href="https://github.com/kaustubnvd/SyncTogether/issues">Request Feature</a>
 </p>
 <p align="center">
-    <img src="https://media.giphy.com/media/gLXWC9nhZ7QBlOTEsv/giphy.gif">
+    <img src="https://user-images.githubusercontent.com/37305714/87588735-c24fbe00-c6a9-11ea-975d-55b97825ae57.gif" alt="demo">
 <p>
 
 ## Getting Started
@@ -31,7 +31,7 @@ Make sure you have Node.js and npm installed locally on your system.
 
 1. Clone the repo
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+git clone https://github.com/kaustubnvd/SyncTogether.git
 ```
 2. Install NPM packages
 ```sh
