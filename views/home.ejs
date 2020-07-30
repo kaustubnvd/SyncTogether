@@ -25,9 +25,9 @@
         <% } %>
         <form class="form-control" action="/room" method="POST">
           <label for="nickname">Nickname:</label>
-          <input class="form-input" type="text" id="nickname" name="nickname" placeholder="shadowcrux, parth8a, !xobile, sanjrang12, etc." required><br>
+          <input class="form-input" type="text" id="nickname" name="nickname" placeholder="shadowcrux, parth8a, !xobile, sanjrang12, etc." autocomplete="off" spellcheck="false" required><br>
           <label for="room">Room Name:</label>
-          <input class="form-input" type="text" id="room" name="room" placeholder="Help your friends find your room..." required>
+          <input class="form-input" type="text" id="room" name="room" placeholder="Help your friends find your room" autocomplete="off" spellcheck="false" required>
           <label for="form-join">
             <input type="checkbox" id="form-join" name="isJoining"> <span>Join existing room</span>
           </label>
