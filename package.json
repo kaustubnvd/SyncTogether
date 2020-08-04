@@ -4,8 +4,8 @@
   "description": "Watch YouTube videos synced in real-time together with your friends",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "cross-env NODE_ENV=production node app.js",
+    "dev": "cross-env NODE_ENV=development nodemon app",
     "lint": "eslint ./"
   },
   "author": "Kaustub Navalady",
@@ -24,6 +24,7 @@
     "yt-scraper": "^2.0.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "eslint": "^7.3.1",
     "nodemon": "^2.0.4"
   }
