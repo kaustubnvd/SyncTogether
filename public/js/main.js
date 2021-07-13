@@ -354,10 +354,11 @@ socket.on('chat-message', (messageData) => {
 });
 
 // Creates chat message and adds it to the DOM
-function addMessage(user, message, time) {
+function addMessage(user, message) {
   const messageElem = document.createElement('div');
+  const msgTime = moment().format('h:mm a');
   messageElem.classList.add('chat-msg');
-  messageElem.innerHTML = `<p class="meta">${user} <span>${time}</span></p><p class="msg-text">${message}</p>`; // TODO: Fix XSS
+  messageElem.innerHTML = `<p class="meta">${user} <span>${msgTime}</span></p><p class="msg-text">${message}</p>`; // TODO: Fix XSS
   chatArea.append(messageElem);
 }
 
@@ -399,3 +400,7 @@ html.addEventListener('click', (e) => {
     inviteModal.classList.remove('show-modal');
   }
 });
+
+
+onYouTubeIframeAPIReady(); 
+

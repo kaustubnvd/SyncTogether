@@ -30,7 +30,11 @@ app.use(flash()); // Stores flash messages in the session
 app.use(require('./routes/home'));
 app.use(require('./routes/room'));
 
-server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+server.listen(PORT, () =>
+  console.log(
+    `🚀 Server started in ${process.env.NODE_ENV} mode on port ${PORT}`
+  )
+);
 
 const rooms = require('./models/rooms');
 
@@ -112,12 +116,11 @@ io.on('connection', (socket) => {
   // A user sends a chat message
   socket.on('chat-message', (message, room) => {
     const nickname = rooms[room].users[socket.id]; // The socket.id maps to the username
-    const msgTime = moment().format('h:mm a'); // When the message was sent
+    // const msgTime = moment().format('h:mm a'); // When the message was sent
     // Emits to all sockets in the room, including the sender
     io.in(room).emit('chat-message', {
       name: nickname,
       message: message,
-      time: msgTime,
     });
   });
 
